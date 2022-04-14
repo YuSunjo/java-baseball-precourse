@@ -17,8 +17,7 @@ public class Application {
 
             String output = "";
             while (!output.equals(String.format("%s스트라이크", MAX_NUM_SIZE))) {
-                String player = NumberBaseballUtils.inputNum();
-                NumberBaseballUtils.validate(player, MAX_NUM_SIZE);
+                String player = NumberBaseballUtils.inputNum(MAX_NUM_SIZE);
                 List<Integer> playerList = NumberBaseballUtils.toList(player);
                 output = NumberBaseballUtils.output(computerList, playerList);
                 System.out.println(output);

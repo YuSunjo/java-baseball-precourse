@@ -37,9 +37,11 @@ public class NumberBaseballUtils {
         return strikeNum;
     }
 
-    public static String inputNum() {
+    public static String inputNum(int maxNumSize) {
         System.out.print("숫자를 입력해주세요 : ");
-        return Console.readLine();
+        String player = Console.readLine();
+        validate(player, maxNumSize);
+        return player;
     }
 
     public static String output(List<Integer> computerList, List<Integer> playerList) {
@@ -77,7 +79,7 @@ public class NumberBaseballUtils {
         return randomList;
     }
 
-    public static void validate(String output, int maxNumSize) {
+    private static void validate(String output, int maxNumSize) {
         try {
             if (output.length() < maxNumSize) {
                 throw new IllegalArgumentException("잘못된 입력입니다.");
