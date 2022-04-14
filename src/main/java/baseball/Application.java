@@ -12,22 +12,19 @@ public class Application {
         // TODO: 프로그램 구현
         boolean isPlay = true;
 
-        List<Integer> computerList = NumberBaseballUtils.pickNum(MAX_NUM_SIZE);
-
         while (isPlay) {
-            String player = NumberBaseballUtils.inputNum();
-            NumberBaseballUtils.validate(player, MAX_NUM_SIZE);
-            List<Integer> playerList = NumberBaseballUtils.toList(player);
+            List<Integer> computerList = NumberBaseballUtils.pickNum(MAX_NUM_SIZE);
 
-            String output = NumberBaseballUtils.output(computerList, playerList);
-            if (output.equals(String.format("%s스트라이크", MAX_NUM_SIZE))) {
+            String output = "";
+            while (!output.equals(String.format("%s스트라이크", MAX_NUM_SIZE))) {
+                String player = NumberBaseballUtils.inputNum();
+                NumberBaseballUtils.validate(player, MAX_NUM_SIZE);
+                List<Integer> playerList = NumberBaseballUtils.toList(player);
+                output = NumberBaseballUtils.output(computerList, playerList);
                 System.out.println(output);
-                System.out.printf("%s개의 숫자를 모두 맞히셨습니다! 게임 종료%n", MAX_NUM_SIZE);
-                isPlay = NumberBaseballUtils.playAgain();
-                computerList = NumberBaseballUtils.isPlay(isPlay, MAX_NUM_SIZE);
-                continue;
             }
-            System.out.println(output);
+            System.out.printf("%s개의 숫자를 모두 맞히셨습니다! 게임 종료%n", MAX_NUM_SIZE);
+            isPlay = NumberBaseballUtils.playAgain();
         }
     }
 

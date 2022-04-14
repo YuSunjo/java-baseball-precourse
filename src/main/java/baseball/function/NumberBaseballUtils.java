@@ -4,7 +4,6 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class NumberBaseballUtils {
@@ -101,13 +100,6 @@ public class NumberBaseballUtils {
         } catch (Exception e) {
             throw new IllegalArgumentException("잘못된 입력입니다.");
         }
-    }
-
-    public static List<Integer> isPlay(boolean isPlay, int maxNumSize) {
-        if (isPlay) {
-            return NumberBaseballUtils.pickNum(maxNumSize);
-        }
-        return Collections.emptyList();
     }
 
 }
