@@ -9,14 +9,10 @@ import java.util.List;
 
 public class NumberBaseballUtils {
 
-    public static String toString(List<Integer> randomList) {
-        return randomList.toString().replaceAll("[^0-9]", "");
-    }
-
-    public static List<Integer> toList(String s) {
+    public static List<Integer> toList(String player) {
         List<Integer> integerList = new ArrayList<>();
-        for (int i = 0; i < s.length(); i++) {
-            String substring = s.substring(i, i + 1);
+        for (int i = 0; i < player.length(); i++) {
+            String substring = player.substring(i, i + 1);
             integerList.add(Integer.valueOf(substring));
         }
         return integerList;
