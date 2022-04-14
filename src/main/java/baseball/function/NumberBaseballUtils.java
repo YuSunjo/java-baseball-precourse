@@ -66,6 +66,7 @@ public class NumberBaseballUtils {
     public static boolean playAgain() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요");
         String answer = Console.readLine();
+        validateAgain(answer);
         return !answer.equals("2");
     }
 
@@ -79,6 +80,31 @@ public class NumberBaseballUtils {
             randomList.add(number);
         }
         return randomList;
+    }
+
+    public static void validate(String output, int maxNumSize) {
+        try {
+            if (output.length() < maxNumSize) {
+                throw new IllegalArgumentException("잘못된 입력입니다.");
+            }
+            if (output.length() > maxNumSize) {
+                throw new IllegalArgumentException("잘못된 입력입니다.");
+            }
+            Integer.valueOf(output);
+        } catch (Exception e) {
+            throw new IllegalArgumentException("잘못된 입력입니다.");
+        }
+    }
+
+    private static void validateAgain(String answer) {
+        try {
+            if (answer.length() != 1) {
+                throw new IllegalArgumentException("잘못된 입력입니다.");
+            }
+            Integer.valueOf(answer);
+        } catch (Exception e) {
+            throw new IllegalArgumentException("잘못된 입력입니다.");
+        }
     }
 
     public static List<Integer> isPlay(boolean isPlay, int maxNumSize) {

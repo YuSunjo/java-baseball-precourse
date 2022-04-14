@@ -16,6 +16,7 @@ public class Application {
 
         while (isPlay) {
             String player = NumberBaseballUtils.inputNum();
+            NumberBaseballUtils.validate(player, MAX_NUM_SIZE);
             List<Integer> playerList = NumberBaseballUtils.toList(player);
 
             String output = NumberBaseballUtils.output(computerList, playerList);
