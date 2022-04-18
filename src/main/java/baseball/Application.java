@@ -1,8 +1,8 @@
 package baseball;
 
-import baseball.function.NumberBaseballUtils;
-
-import java.util.List;
+import baseball.controller.GameController;
+import baseball.function.GameStatus;
+import baseball.service.GameService;
 
 public class Application {
 
@@ -10,21 +10,10 @@ public class Application {
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-        boolean isPlay = true;
-
-        while (isPlay) {
-            List<Integer> computerList = NumberBaseballUtils.pickNum(MAX_NUM_SIZE);
-
-            String output = "";
-            while (!output.equals(String.format("%s스트라이크", MAX_NUM_SIZE))) {
-                String player = NumberBaseballUtils.inputNum(MAX_NUM_SIZE);
-                List<Integer> playerList = NumberBaseballUtils.toList(player);
-                output = NumberBaseballUtils.output(computerList, playerList);
-                System.out.println(output);
-            }
-            System.out.printf("%s개의 숫자를 모두 맞히셨습니다! 게임 종료%n", MAX_NUM_SIZE);
-            isPlay = NumberBaseballUtils.playAgain();
-        }
+        GameService gameService = new GameService();
+        GameController gameController = new GameController(gameService);
+        String status = GameStatus.START.getStatus();
+        gameController.gamsStart(MAX_NUM_SIZE, status);
     }
 
 }
